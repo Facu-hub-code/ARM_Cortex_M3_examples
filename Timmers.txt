@@ -1,5 +1,5 @@
 /*
-Timmers [0, 1, 2, 3]:
+            Modulos Timmers [0, 1, 2, 3]:
 pag 511
 Funciona como temporizador o contador
 [TIMER COUNTER] registro, contador ascendente
@@ -36,5 +36,11 @@ Para configurar PCLK necesitamos dos bits.
 
 En el vector de interrupcion del match o capture, tengo que preguntar cual de todos los match o capture fue 
 Eso lo pregunto por software dentro del handler
+
+*/
+
+/*
+            Modulos Timmers
+
 
 */
