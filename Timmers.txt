@@ -1,0 +1,40 @@
+/*
+Timmers [0, 1, 2, 3]:
+pag 511
+Funciona como temporizador o contador
+[TIMER COUNTER] registro, contador ascendente
+[PRESCALER REGISTER] registro, (el clk primero pasa por el prescaler)
+PCLK no es necesariamente la señal de reloj que llega al core
+Es una señal que pasa por un divisor de frecuencia, dicho divisor si le llega la señal del clk
+
+
+El timmer tiene 4 registros para programar la cuenta, a diferencia del PIC que solo tenia 1
+estos son los MATCH REGISTER
+
+Cuando hacemos match podemos tomar acciones preconfiguradas en el bloque de control sin tener que pasar por el CPU
+
+-------------------------------------------------------------------------------------------------------------------
+
+Otra forma de utilizar el Timmer es modo capture:
+Esperando eventos de ciertas entradas y capturando valores de ciertos pines.
+
+------------------------------------
+
+ Comportamiento del Timmer:
+ PCLK: Señal de reljo que sale del primer divisor y llega la prescaler
+ PRECALER COUNTER: Prescaler auxiliar, ascendente de 32 bits y que se reinicia con el prescaler register PR
+
+TIMER COUNTER: Registro propio del timmer
+
+OJO: La capacidad de dividir del prescaler es de 2^32
+Divide por los indices, por ej:
+Pongo el prescaler en 2 [0, 1, 2] voy a dividir por 3 ciclos de reloj
+
+Para configurar PCLK necesitamos dos bits.
+
+-------------------
+
+En el vector de interrupcion del match o capture, tengo que preguntar cual de todos los match o capture fue 
+Eso lo pregunto por software dentro del handler
+
+*/
