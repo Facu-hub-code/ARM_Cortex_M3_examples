@@ -31,17 +31,17 @@ Configuro el timmer 0:
 - TCR 
 
 //Configuracion en modo match
-void confTimer(){
-	LPC_SC->PCONP		|=	(1<<1); //pag 65 
-	LPC_SC->PCLKSEL0 	|=	(1<<2); //pag 59
-	LPC_PINCON->PINSEL3	|=	(3<<20); //pag 120
-	LPC_TIM0->EMR		|=	(3>>4); //pag 509
-	LPC_TIM0->MR0 		= 	70000000;
-	LPC_TIM0->MCR 		|= 	(1<<1);	//pag 507
-	LPC_TIM0->MCR 		|= 	(1<<0);	  
+void confTimer0Match(){
+	LPC_SC->PCONP		|=	(1<<1); //pag 65 prende el periferico
+	LPC_SC->PCLKSEL0 	|=	(1<<2); //pag 59 divide el cclk/2
+	LPC_PINCON->PINSEL3	|=	(3<<20); //pag 120 elige la funcion match 00
+	LPC_TIM0->EMR		|=	(3>>4); //pag 509 
+	LPC_TIM0->MR0 		= 	70000000; //Valor al que quiero matchear
+	LPC_TIM0->MCR 		|= 	(1<<1);	//pag 507 le digo que, interrumpa y resetee
+	LPC_TIM0->MCR 		|= 	(1<<0); // cuando el valor MCR = TC
 	LPC_TIM0->TCR		=	3		//pag 505
-	LPC_TIM0->TCR		&=	~(1<<1)
-	NVIC_EnableIRQ(TIMER0_IRQn);
+	LPC_TIM0->TCR		&=	~(1<<1) //Habilito el contador
+	NVIC_EnableIRQ(TIMER0_IRQn); //HJabilito la interrupcion
 	return;
 }
 */
